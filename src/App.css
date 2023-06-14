@@ -1,0 +1,48 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 5px 10px 10px 10px;
+}
+
+h2 {
+    color: #fff;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+
+.greet {
+    font-size: 1.2rem;
+    color: #fff;
+    justify-content: center;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.login {
+    font-size: 1.5rem;
+    color: #fff;
+    width: 6rem;
+    height: 2.5rem;
+    background-color: #024851;
+    border-color: white;
+}
+
+.logout {
+    font-size: 1.5rem;
+    color: #fff;
+    width: 7rem;
+    height: 2.5rem;
+    background-color: #024851;
+    border-color: white;
+}
+
+.logout:hover {
+    background-color: #067785;
+}
+
+.login:hover {
+    background-color: #067785;
+}
