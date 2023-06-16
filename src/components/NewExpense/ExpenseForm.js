@@ -11,8 +11,11 @@ const ExpenseForm = (props) => {
   const [enteredDate, setEnteredDate] = useState("");
 
   // setEnteredemail()
-  const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
-  const user_email = user.email;
+  const { user, isAuthenticated } = useAuth0();
+
+  {
+    isAuthenticated && console.log(user.email);
+  }
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
@@ -27,26 +30,31 @@ const ExpenseForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    let expenseData;
+    {
+      isAuthenticated &&
+        (expenseData = {
+          email: user.email,
+          title: enteredTitle,
+          amount: enteredAmount,
+          date: new Date(enteredDate),
+        });
 
-    const expenseData = {
-      email: user_email,
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
-    };
-
-    props.onSaveExpenseData(expenseData);
-    //after i submit the form by clicking the Add expense button,
-    // then print the object(in the console..just aise hi chk kr rha hu)
-    // and clear the input fields
-    console.log(expenseData);
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+      props.onSaveExpenseData(expenseData);
+      //after i submit the form by clicking the Add expense button,
+      // then print the object(in the console..just aise hi chk kr rha hu)
+      // and clear the input fields
+      console.log(expenseData);
+      setEnteredTitle("");
+      setEnteredAmount("");
+      setEnteredDate("");
+    }
   };
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
+        {/* <div className="budget"> */}
+        {/* </div> */}
         <div className="new-expense__control">
           <label>Spent On</label>
           <input
