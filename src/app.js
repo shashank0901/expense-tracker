@@ -16,7 +16,6 @@ const App = () => {
   const { user, loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   // const { logout } = useAuth0();
-
   function fetchData() {
     fetch("http://localhost:2000/expense")
       .then((response) => {
